@@ -2,7 +2,11 @@ package Adventure_Time;
 
 public class Main
 {
-    public static void main(String[] args){
-        System.out.println("Hello world");
+    public static void main(String[] args)
+    {
+        Adventure adventure = new Adventure();
+        UserInterface ui = new UserInterface(adventure);
+
+        ui.getCommand();
     }
 }
