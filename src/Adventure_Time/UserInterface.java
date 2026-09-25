@@ -11,7 +11,6 @@ public class UserInterface
     {
         scanner = new Scanner(System.in);
         this.adventure = adventure;
-
     }
 
     public void getCommand()
@@ -22,29 +21,19 @@ public class UserInterface
         {
             if (command.equals("go north"))
             {
-                adventure.goNorth();
-                adventure.look();
-
-            } else if (command.equals("go east"))
-            {
-                adventure.goEast();
-                adventure.look();
-
+                go("north");
             } else if (command.equals("go south"))
             {
-
-                adventure.goSouth();
-                adventure.look();
-
+                go("south");
+            } else if (command.equals("go east"))
+            {
+                go("east");
             } else if (command.equals("go west"))
             {
-
-                adventure.goWest();
-                adventure.look();
-
+                go("west");
             } else if (command.equals("look"))
             {
-                adventure.look();
+                look();
             } else if (command.equals("help"))
             {
                 System.out.println("instructions");
@@ -53,5 +42,24 @@ public class UserInterface
             command = scanner.nextLine();
         }
         System.out.println("exited the game");
+    }
+
+    private void go(String direction)
+    {
+        boolean moved = adventure.go(direction);
+
+        if (moved)
+        {
+            look();
+        } else
+        {
+            System.out.println("you can't go that way");
+        }
+    }
+
+    private void look()
+    {
+        System.out.println(adventure.getCurrentRoomName());
+        System.out.println(adventure.getCurrentRoomDescription());
     }
 }
