@@ -45,7 +45,16 @@ public class UserInterface
                 drop(command.substring(5));
             } else if (command.equals("help"))
             {
-                System.out.println("instructions");
+                System.out.println("go north\n" +
+                        "go south\n" +
+                        "go east\n" +
+                        "go west\n" +
+                        "look\n" +
+                        "inventory\n" +
+                        "take <item>\n" +
+                        "drop <item>\n" +
+                        "help\n" +
+                        "exit");
             }
             System.out.print("> ");
             command = scanner.nextLine();
