@@ -18,11 +18,11 @@ public class Adventure
 
     public String getCurrentRoomName()
     {
-        return player.getCurrentRoom().getName();
+        return player.getCurrentRoomName();
     }
 
     public String getCurrentRoomDescription()
     {
-        return player.getCurrentRoom().getDescription();
+        return player.getCurrentRoomDescription();
     }
 }
