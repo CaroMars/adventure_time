@@ -1,14 +1,19 @@
 package Adventure_Time;
 
+import java.util.ArrayList;
+
 public class Player
 {
     private Room currentRoom;
 
+    private ArrayList<Item> inventory;
+
     public Player(Room startRoom)
     {
         currentRoom = startRoom;
-    }
+        inventory = new ArrayList<>();
 
+    }
     public boolean move(String direction)
     {
         Room desiredRoom = switch (direction)
@@ -33,4 +38,36 @@ public class Player
     {
         return currentRoom;
     }
+
+    public ArrayList<Item> getInventory()
+    {
+        return inventory;
+    }
+
+    public boolean takeItem(Item item)
+    {
+        if (currentRoom.getItems().contains(item))
+        {
+            currentRoom.getItems().remove(item);
+            inventory.add(item);
+            return true;
+
+        }
+
+        return false;
+    }
+
+
+    public boolean dropItem(Item item)
+    {
+        if (inventory.contains(item))
+        {
+            inventory.remove(item);
+            currentRoom.addItem(item);
+            return true;
+        }
+
+        return false;
+    }
+
 }
