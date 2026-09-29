@@ -1,5 +1,7 @@
 package Adventure_Time;
 
+import java.util.ArrayList;
+
 public class Room
 {
     private String name;
@@ -9,10 +11,13 @@ public class Room
     private Room south;
     private Room west;
 
+    private ArrayList<Item> items;
+
     public Room(String name, String description)
     {
         this.name = name;
         this.description = description;
+        items = new ArrayList<>();
     }
 
     public String getName()
@@ -25,7 +30,15 @@ public class Room
         return description;
     }
 
+    public void addItem(Item item)
+    {
+        items.add(item);
+    }
 
+    public ArrayList<Item> getItems()
+    {
+        return items;
+    }
     public void setNorth(Room north)
     {
         this.north = north;
