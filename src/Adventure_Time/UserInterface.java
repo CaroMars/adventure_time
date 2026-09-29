@@ -34,6 +34,15 @@ public class UserInterface
             } else if (command.equals("look"))
             {
                 look();
+            } else if (command.equals("inventory"))
+            {
+                inventory();
+            } else if (command.startsWith("take "))
+            {
+                take(command.substring(5));
+            } else if (command.startsWith("drop "))
+            {
+                drop(command.substring(5));
             } else if (command.equals("help"))
             {
                 System.out.println("instructions");
@@ -61,5 +70,41 @@ public class UserInterface
     {
         System.out.println(adventure.getCurrentRoomName());
         System.out.println(adventure.getCurrentRoomDescription());
+    }
+
+    private void inventory()
+    {
+        for (Item item : adventure.getInventory())
+        {
+            System.out.println(item.getLongName());
+        }
+    }
+
+    private void take(String itemName)
+    {
+        for (Item item : adventure.getCurrentRoomItems())
+        {
+            if (item.getShortName().equals(itemName))
+            {
+                adventure.takeItem(item);
+                System.out.println("You took " + item.getShortName());
+                return;
+            }
+        }
+        System.out.println("There is no " + itemName + " here.");
+    }
+
+    private void drop(String itemName)
+    {
+        for (Item item : adventure.getInventory())
+        {
+            if (item.getShortName().equals(itemName))
+            {
+                adventure.dropItem(item);
+                System.out.println("You dropped " + item.getShortName());
+                return;
+            }
+        }
+        System.out.println("You don't have " + itemName + ".");
     }
 }
