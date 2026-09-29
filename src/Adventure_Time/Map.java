@@ -22,7 +22,10 @@ public class Map
         Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.");
 
         Item lamp = new Item("lamp", "A dusty old lamp");
+        Item flashlight = new Item("flashlight", "A clean shiny flashlight");
+
         room1.addItem(lamp);
+        room1.addItem(flashlight);
 
         room1.setEast(room2);
         room1.setSouth(room4);
