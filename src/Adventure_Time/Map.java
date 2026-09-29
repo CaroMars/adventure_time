@@ -6,6 +6,11 @@ public class Map
 
     public Map()
     {
+        buildMap();
+    }
+
+    private void buildMap()
+    {
         Room room1 = new Room("Room 1", "A room with no distinct features, except two doors.");
         Room room2 = new Room("Room 2", "A room with no distinct features, except two doors.");
         Room room3 = new Room("Room 3", "A room with no distinct features, except two doors.");
@@ -15,6 +20,9 @@ public class Map
         Room room7 = new Room("Room 7", "A room with no distinct features, except two doors.");
         Room room8 = new Room("Room 8", "A room with no distinct features, except three doors.");
         Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.");
+
+        Item lamp = new Item("lamp", "A dusty old lamp");
+        room1.addItem(lamp);
 
         room1.setEast(room2);
         room1.setSouth(room4);
