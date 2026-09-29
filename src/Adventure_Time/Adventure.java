@@ -30,17 +30,17 @@ public class Adventure
 
     public ArrayList<Item> getCurrentRoomItems()
     {
-        return player.getCurrentRoom().getItems();
+        return player.getCurrentRoomItems();
     }
 
-    public boolean takeItem(Item item)
+    public Item takeItem(String itemName)
     {
-        return player.takeItem(item);
+        return player.takeItem(itemName);
     }
 
-    public boolean dropItem(Item item)
+    public Item dropItem(String itemName)
     {
-        return player.dropItem(item);
+        return player.dropItem(itemName);
     }
 
     public ArrayList<Item> getInventory()

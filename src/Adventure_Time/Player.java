@@ -49,35 +49,45 @@ public class Player
         return currentRoom.getDescription();
     }
 
+    public ArrayList<Item> getCurrentRoomItems()
+    {
+        return currentRoom.getItems();
+    }
+
     public ArrayList<Item> getInventory()
     {
         return inventory;
     }
 
-    public boolean takeItem(Item item)
+    public Item takeItem(String itemName)
     {
-        if (currentRoom.getItems().contains(item))
+        for (Item item : currentRoom.getItems())
         {
-            currentRoom.getItems().remove(item);
-            inventory.add(item);
-            return true;
-
+            if (item.getShortName().equals(itemName))
+            {
+                currentRoom.getItems().remove(item);
+                inventory.add(item);
+                return item;
+            }
         }
 
-        return false;
+        return null;
     }
 
 
-    public boolean dropItem(Item item)
+    public Item dropItem(String itemName)
     {
-        if (inventory.contains(item))
+        for (Item item : inventory)
         {
-            inventory.remove(item);
-            currentRoom.addItem(item);
-            return true;
+            if (item.getShortName().equals(itemName))
+            {
+                inventory.remove(item);
+                currentRoom.addItem(item);
+                return item;
+            }
         }
 
-        return false;
+        return null;
     }
 
 }

@@ -79,6 +79,12 @@ public class UserInterface
     {
         System.out.println(adventure.getCurrentRoomName());
         System.out.println(adventure.getCurrentRoomDescription());
+
+        for (Item item : adventure.getCurrentRoomItems())
+        {
+            System.out.println(item.getLongName());
+        }
+
     }
 
     private void inventory()
@@ -91,29 +97,29 @@ public class UserInterface
 
     private void take(String itemName)
     {
-        for (Item item : adventure.getCurrentRoomItems())
+        Item item = adventure.takeItem(itemName);
+
+        if (item != null)
         {
-            if (item.getShortName().equals(itemName))
-            {
-                adventure.takeItem(item);
-                System.out.println("You took " + item.getShortName());
-                return;
-            }
+            System.out.println("You took " + item.getShortName());
         }
-        System.out.println("There is no " + itemName + " here.");
+        else
+        {
+            System.out.println("There is no " + itemName + " here.");
+        }
     }
 
     private void drop(String itemName)
     {
-        for (Item item : adventure.getInventory())
+        Item item = adventure.dropItem(itemName);
+
+        if (item != null)
         {
-            if (item.getShortName().equals(itemName))
-            {
-                adventure.dropItem(item);
-                System.out.println("You dropped " + item.getShortName());
-                return;
-            }
+            System.out.println("You dropped " + item.getShortName());
         }
-        System.out.println("You don't have " + itemName + ".");
+        else
+        {
+            System.out.println("You don't have " + itemName + ".");
+        }
     }
 }
