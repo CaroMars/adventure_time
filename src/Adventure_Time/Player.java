@@ -39,6 +39,16 @@ public class Player
         return currentRoom;
     }
 
+    public String getCurrentRoomName()
+    {
+        return currentRoom.getName();
+    }
+
+    public String getCurrentRoomDescription()
+    {
+        return currentRoom.getDescription();
+    }
+
     public ArrayList<Item> getInventory()
     {
         return inventory;
