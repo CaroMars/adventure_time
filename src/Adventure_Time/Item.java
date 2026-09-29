@@ -1,3 +1,5 @@
+package Adventure_Time;
+
 public class Item
 {
     private String shortName;
@@ -8,14 +10,12 @@ public class Item
         this.longName = longName;
     }
 
-    // shortName bruges når spilleren skriver navnet på item'et
 
     public String getShortName()
     {
         return shortName;
     }
 
-    // longName er den længere beskrivelse af item'et
 
 
     public String getLongName()
