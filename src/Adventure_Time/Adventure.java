@@ -1,5 +1,7 @@
 package Adventure_Time;
 
+import java.util.ArrayList;
+
 public class Adventure
 {
     private Player player;
@@ -25,4 +27,25 @@ public class Adventure
     {
         return player.getCurrentRoomDescription();
     }
+
+    public ArrayList<Item> getCurrentRoomItems()
+    {
+        return player.getCurrentRoom().getItems();
+    }
+
+    public boolean takeItem(Item item)
+    {
+        return player.takeItem(item);
+    }
+
+    public boolean dropItem(Item item)
+    {
+        return player.dropItem(item);
+    }
+
+    public ArrayList<Item> getInventory()
+    {
+        return player.getInventory();
+    }
+
 }
