@@ -17,6 +17,8 @@ public class Player
         health = 100;
 
     }
+
+
     public boolean move(String direction)
     {
         Room desiredRoom = switch (direction)
@@ -92,5 +94,12 @@ public class Player
 
         return null;
     }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+
 
 }

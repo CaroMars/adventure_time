@@ -48,4 +48,9 @@ public class Adventure
         return player.getInventory();
     }
 
+    public int getHealth()
+    {
+        return player.getHealth();
+    }
+
 }
