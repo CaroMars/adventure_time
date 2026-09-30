@@ -53,4 +53,10 @@ public class Adventure
         return player.getHealth();
     }
 
+    // Sender eat-kommandoen videre fra UI til Player
+    public EatOutcome eat (String itemName)
+    {
+        return player.eat(itemName);
+    }
+
 }

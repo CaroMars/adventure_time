@@ -100,6 +100,69 @@ public class Player
         return health;
     }
 
+    // Finder mad i inventory/rummet, ændre health og fjerne maden
+    public EatOutcome eat(String itemName)
+    {
+        Item foundItem = null;
+        boolean inInventory = false;
+
+        //leder vi efter i spillerens inventory
+        for (Item item : inventory)
+        {
+            if (item.getShortName().equals(itemName))
+            {
+                foundItem = item;
+                inInventory = true;
+                break;
+            }
+        }
+
+        //Hvis den ikke blev fundet i inventory, leder vi i rummet
+
+        if (foundItem == null)
+        {
+            for (Item item : currentRoom.getItems())
+            {
+                if (item.getShortName().equals(itemName))
+                {
+                    foundItem = item;
+                    break;
+                }
+            }
+        }
+
+        // Tingen findes ikke
+        if (foundItem == null)
+        {
+            return new EatOutcome(EatResult.NOT_FOUND, itemName, 0);
+
+        }
+
+        // Tingen findes men ikke er mad
+        if (!(foundItem instanceof Food))
+        {
+            return new EatOutcome(EatResult.NOT_FOUND, foundItem.getLongName(), 0);
+
+        }
+
+        // Tingen er food
+        Food food = (Food) foundItem;
+
+        int healthChange = food.getHealthPoints();
+        health += healthChange;
+
+        //Fjern maden efter den er blevet spist
+        if (inInventory)
+        {
+            inventory.remove(foundItem);
+        }
+        else
+        {
+            currentRoom.getItems().remove(foundItem);
+        }
+        return new EatOutcome(EatResult.EATEN, foundItem.getLongName(), healthChange);
+
+    }
 
 
 }
