@@ -51,7 +51,12 @@ public class UserInterface
             else if (command.startsWith("drop "))
             {
                 drop(command.substring(5));
+            } else if (command.startsWith("eat "))
+            {
+                eat(command.substring(4));
             }
+
+
             else if (command.equals("health"))
             {
                 int health = adventure.getHealth();
@@ -156,6 +161,35 @@ public class UserInterface
         else
         {
             System.out.println("You don't have " + itemName + ".");
+        }
+    }
+
+    // EAT UI - Viser resultat af eat kommandoen til spilleren
+    private void eat (String itemName)
+    {
+        EatOutcome outcome = adventure.eat(itemName);
+
+        switch (outcome.getResult())
+        {
+            case NOT_FOUND:
+                System.out.println("There is nothing like" + itemName + " to eat around here");
+                break;
+
+            case NOT_FOOD:
+                System.out.println("You cannot eat " + outcome.getItemName());
+                break;
+
+            case EATEN:
+                if (outcome.getHealthChange()< 0)
+                {
+                    System.out.println("You eat " + outcome.getItemName() + ". That was a mistake.");
+                }
+                else
+                {
+                    System.out.println("You eat " + outcome.getItemName() + ". You feel a litle better.");
+                    break;
+                }
+
         }
     }
 }
