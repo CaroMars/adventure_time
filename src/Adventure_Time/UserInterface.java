@@ -11,7 +11,6 @@ public class UserInterface
     {
         scanner = new Scanner(System.in);
         this.adventure = adventure;
-
     }
 
     public void getCommand()
@@ -22,36 +21,105 @@ public class UserInterface
         {
             if (command.equals("go north"))
             {
-                adventure.goNorth();
-                adventure.look();
-
-            } else if (command.equals("go east"))
-            {
-                adventure.goEast();
-                adventure.look();
-
+                go("north");
             } else if (command.equals("go south"))
             {
-
-                adventure.goSouth();
-                adventure.look();
-
+                go("south");
+            } else if (command.equals("go east"))
+            {
+                go("east");
             } else if (command.equals("go west"))
             {
-
-                adventure.goWest();
-                adventure.look();
-
+                go("west");
             } else if (command.equals("look"))
             {
-                adventure.look();
+                look();
+            } else if (command.equals("inventory"))
+            {
+                inventory();
+            } else if (command.startsWith("take "))
+            {
+                take(command.substring(5));
+            } else if (command.startsWith("drop "))
+            {
+                drop(command.substring(5));
             } else if (command.equals("help"))
             {
-                System.out.println("instructions");
+                System.out.println("go north\n" +
+                        "go south\n" +
+                        "go east\n" +
+                        "go west\n" +
+                        "look\n" +
+                        "inventory\n" +
+                        "take <item>\n" +
+                        "drop <item>\n" +
+                        "help\n" +
+                        "exit");
             }
             System.out.print("> ");
             command = scanner.nextLine();
         }
         System.out.println("exited the game");
+    }
+
+    private void go(String direction)
+    {
+        boolean moved = adventure.go(direction);
+
+        if (moved)
+        {
+            look();
+        } else
+        {
+            System.out.println("you can't go that way");
+        }
+    }
+
+    private void look()
+    {
+        System.out.println(adventure.getCurrentRoomName());
+        System.out.println(adventure.getCurrentRoomDescription());
+
+        for (Item item : adventure.getCurrentRoomItems())
+        {
+            System.out.println(item.getLongName());
+        }
+
+    }
+
+    private void inventory()
+    {
+        for (Item item : adventure.getInventory())
+        {
+            System.out.println(item.getLongName());
+        }
+    }
+
+    private void take(String itemName)
+    {
+        Item item = adventure.takeItem(itemName);
+
+        if (item != null)
+        {
+            System.out.println("You took " + item.getShortName());
+        }
+        else
+        {
+            System.out.println("There is no " + itemName + " here.");
+        }
+    }
+
+    private void drop(String itemName)
+    {
+        Item item = adventure.dropItem(itemName);
+
+        if (item != null)
+        {
+            System.out.println("You dropped " + item.getShortName());
+        }
+        else
+        {
+            System.out.println("You don't have " + itemName + ".");
+        }
     }
 }
