@@ -8,10 +8,13 @@ public class Player
 
     private ArrayList<Item> inventory;
 
+    private int health;
+
     public Player(Room startRoom)
     {
         currentRoom = startRoom;
         inventory = new ArrayList<>();
+        health = 100;
 
     }
     public boolean move(String direction)
