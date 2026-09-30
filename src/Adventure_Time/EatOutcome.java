@@ -1,0 +1,26 @@
+package Adventure_Time;
+// EAT OUTCOME - Gemmer resultat, item-navn og health ændring fra eat().
+public class EatOutcome
+{
+    private final EatResult result;
+    private final String itemName;
+    private final int healthChange;
+
+    public EatOutcome(EatResult result, String itemName, int healthChange)
+    {
+        this.result = result;
+        this.itemName = itemName;
+        this.healthChange = healthChange;
+
+    }
+
+    public EatResult getResult() { return result;}
+
+    public String getItemName(){ return itemName;}
+
+    public int getHealthChange(){ return healthChange;}
+
+
+
+
+}
