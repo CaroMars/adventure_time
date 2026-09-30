@@ -23,11 +23,14 @@ public class Map
 
         Item lamp = new Item("lamp", "A dusty old lamp");
         Item flashlight = new Item("flashlight", "A clean shiny flashlight");
-        Food apple = new Food("apple", "A crispy red apple", 10);
+        Food bread = new Food("bread", "A loaf of stale bread", 10);
+        Food mushroom = new Food("mushroom","a pale glowing mushroom",-50 );
+
 
         room1.addItem(lamp);
         room1.addItem(flashlight);
-        room1.addItem(apple);
+        room1.addItem(bread);
+        room1.addItem(mushroom);
 
         room1.setEast(room2);
         room1.setSouth(room4);
