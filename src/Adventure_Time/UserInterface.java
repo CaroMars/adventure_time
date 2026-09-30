@@ -17,33 +17,67 @@ public class UserInterface
     {
         System.out.print("> ");
         String command = scanner.nextLine();
+
         while (!command.equals("exit"))
         {
             if (command.equals("go north"))
             {
                 go("north");
-            } else if (command.equals("go south"))
+            }
+            else if (command.equals("go south"))
             {
                 go("south");
-            } else if (command.equals("go east"))
+            }
+            else if (command.equals("go east"))
             {
                 go("east");
-            } else if (command.equals("go west"))
+            }
+            else if (command.equals("go west"))
             {
                 go("west");
-            } else if (command.equals("look"))
+            }
+            else if (command.equals("look"))
             {
                 look();
-            } else if (command.equals("inventory"))
+            }
+            else if (command.equals("inventory"))
             {
                 inventory();
-            } else if (command.startsWith("take "))
+            }
+            else if (command.startsWith("take "))
             {
                 take(command.substring(5));
-            } else if (command.startsWith("drop "))
+            }
+            else if (command.startsWith("drop "))
             {
                 drop(command.substring(5));
-            } else if (command.equals("help"))
+            }
+            else if (command.equals("health"))
+            {
+                int health = adventure.getHealth();
+
+                if (health >= 100)
+                {
+                    System.out.println("health: " + health + " - you are in perfect health");
+                }
+                else if (health >= 50)
+                {
+                    System.out.println("health: " + health + " - you are in good health, but avoid fighting right now");
+                }
+                else if (health >= 25)
+                {
+                    System.out.println("health: " + health + " - you are wounded - find something healthy to eat");
+                }
+                else if (health >= 1)
+                {
+                    System.out.println("health: " + health + " - you are barely alive");
+                }
+                else
+                {
+                    System.out.println("health: " + health + " - you should be dead");
+                }
+            }
+            else if (command.equals("help"))
             {
                 System.out.println("go north\n" +
                         "go south\n" +
@@ -53,15 +87,17 @@ public class UserInterface
                         "inventory\n" +
                         "take <item>\n" +
                         "drop <item>\n" +
+                        "health\n" +
                         "help\n" +
                         "exit");
             }
+
             System.out.print("> ");
             command = scanner.nextLine();
         }
+
         System.out.println("exited the game");
     }
-
     private void go(String direction)
     {
         boolean moved = adventure.go(direction);
