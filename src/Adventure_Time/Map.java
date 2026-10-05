@@ -25,12 +25,16 @@ public class Map
         Item flashlight = new Item("flashlight", "A clean shiny flashlight");
         Food bread = new Food("bread", "A loaf of stale bread", 10);
         Food mushroom = new Food("mushroom","a pale glowing mushroom",-50 );
+        MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword", 25);
+        RangedWeapon revolver = new RangedWeapon("revolver", "an old revolver", 40, 6);
 
 
         room1.addItem(lamp);
         room1.addItem(flashlight);
         room1.addItem(bread);
         room1.addItem(mushroom);
+        room1.addItem(sword);
+        room6.addItem(revolver);
 
         room1.setEast(room2);
         room1.setSouth(room4);
