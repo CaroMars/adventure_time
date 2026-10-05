@@ -16,6 +16,8 @@ package Adventure_Time;
         public abstract boolean canUse();
 
         public abstract void use();
-    }
 
-}
+        public abstract String getAttackVerb();
+
+        public abstract String getUsesLeftText();
+    }

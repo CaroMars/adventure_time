@@ -16,7 +16,19 @@ package Adventure_Time;
 
         @Override
         public void use() {
-            ammunition--;
+            if(canUse()){
+                ammunition--;
+            }
+        }
+
+        @Override
+        public String getAttackVerb(){
+            return "fire";
+        }
+
+        @Override
+        public String getUsesLeftText(){
+            return ammunition + " shots left";
         }
     }
 

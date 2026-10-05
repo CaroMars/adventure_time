@@ -1,19 +1,33 @@
 package Adventure_Time;
 
-    public class MeleeWeapon extends Weapon {
+public class MeleeWeapon extends Weapon
+{
 
-        public MeleeWeapon(String shortName, String longName, int damage) {
-            super(shortName, longName, damage);
-        }
-
-        @Override
-        public boolean canUse() {
-            return true;                    // et sværd løber aldrig tør
-        }
-
-        @Override
-        public void use() {
-            // ingenting – sværdet slides ikke
-        }
+    public MeleeWeapon(String shortName, String longName, int damage)
+    {
+        super(shortName, longName, damage);
     }
+
+    @Override
+    public boolean canUse()
+    {
+        return true;                    // et sværd løber aldrig tør
+    }
+
+    @Override
+    public void use()
+    {
+        // ingenting – sværdet slides ikke
+    }
+
+    @Override
+    public String getAttackVerb(){
+        return "swing";
+    }
+
+    @Override
+    public String getUsesLeftText(){
+        return "";
+    }
+}
 
