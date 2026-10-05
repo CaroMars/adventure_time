@@ -22,5 +22,3 @@ package Adventure_Time;
         public abstract String getUsesLeftText();
 
     }
-
-
