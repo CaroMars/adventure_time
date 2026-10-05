@@ -88,6 +88,10 @@ public class Player
         {
             if (item.getShortName().equals(itemName))
             {
+                if (item == equipped)
+                {
+                    equipped = null;
+                }
                 inventory.remove(item);
                 currentRoom.addItem(item);
                 return item;

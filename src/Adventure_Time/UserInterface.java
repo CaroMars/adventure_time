@@ -138,7 +138,15 @@ public class UserInterface
         for (Item item : adventure.getInventory())
         {
             System.out.println(item.getLongName());
+
         }
+        Weapon equipped = adventure.getEquipped();
+
+        if (equipped != null)
+        {
+            System.out.println("Equipped: " + equipped.getLongName());
+        }
+
     }
 
     private void take(String itemName)
