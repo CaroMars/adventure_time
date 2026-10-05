@@ -172,7 +172,7 @@ public class UserInterface
         switch (outcome.getResult())
         {
             case NOT_FOUND:
-                System.out.println("There is nothing like" + itemName + " to eat around here");
+                System.out.println("There is nothing like " + itemName + " to eat around here");
                 break;
 
             case NOT_FOOD:

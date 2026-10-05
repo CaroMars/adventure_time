@@ -109,7 +109,7 @@ public class Player
         //leder vi efter i spillerens inventory
         for (Item item : inventory)
         {
-            if (item.getShortName().equals(itemName))
+            if (item.getShortName().equalsIgnoreCase(itemName))
             {
                 foundItem = item;
                 inInventory = true;
@@ -123,7 +123,7 @@ public class Player
         {
             for (Item item : currentRoom.getItems())
             {
-                if (item.getShortName().equals(itemName))
+                if (item.getShortName().equalsIgnoreCase(itemName))
                 {
                     foundItem = item;
                     break;
@@ -134,14 +134,14 @@ public class Player
         // Tingen findes ikke
         if (foundItem == null)
         {
-            return new EatOutcome(EatResult.NOT_FOUND, itemName, 0);
+            return new EatOutcome(EatResult.NOT_FOUND, null, 0);
 
         }
 
         // Tingen findes men ikke er mad
         if (!(foundItem instanceof Food))
         {
-            return new EatOutcome(EatResult.NOT_FOUND, foundItem.getLongName(), 0);
+            return new EatOutcome(EatResult.NOT_FOOD, foundItem.getLongName(), 0);
 
         }
 
