@@ -59,4 +59,14 @@ public class Adventure
         return player.eat(itemName);
     }
 
+    public EquipOutcome equip(String shortName)
+    {
+        return player.equip(shortName);
+    }
+
+    public Weapon getEquipped()
+    {
+        return player.GetEqquiped();
+    }
+
 }

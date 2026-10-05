@@ -200,5 +200,9 @@ public class Player
         equipped.use();
     }
 
+    public Weapon GetEqquiped(){
+        return equipped;
+    }
+
 
 }
