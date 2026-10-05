@@ -2,6 +2,7 @@ package Adventure_Time;
 
 public class AttackOutcome
 {
+
     private final AttackResult result;
     private final String weaponName;
     private final String attackVerb;

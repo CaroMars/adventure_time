@@ -194,19 +194,42 @@ public class Player
     }
 
 
-    public void attack(){
-        if (equipped == null){
-            return;
-        }
-        if (!equipped.canUse()){
-            return;
-        }
-        equipped.use();
-    }
-
     public Weapon GetEqquiped(){
         return equipped;
     }
 
+    public AttackOutcome attack()
+    {
+        if (equipped == null)
+        {
+            return new AttackOutcome(
+                    AttackResult.NO_WEAPON,
+                    null,
+                    null,
+                    null);
+
+        }
+        if (!equipped.canUse())
+        {
+            return new AttackOutcome(
+                    AttackResult.NO_USES_LEFT,
+                    equipped.getLongName(),
+                    equipped.getAttackVerb(),
+                    equipped.getUsesLeftText()
+            );
+        }
+
+        equipped.use();
+
+        return new AttackOutcome(
+                AttackResult.ATTACKED,
+                equipped.getLongName(),
+                equipped.getAttackVerb(),
+                equipped.getUsesLeftText()
+        );
+
+    }
+
 
 }
+

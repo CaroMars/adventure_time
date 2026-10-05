@@ -56,10 +56,15 @@ public class UserInterface
                 eat(command.substring(4));
             } else if (command.startsWith("equip ")){
                 equip(command.substring(6));
+            } else if (command.equals("attack"))
+            {
+                attack();
             }
 
-                
-            else if (command.equals("health"))
+
+
+
+             else if (command.equals("health"))
             {
                 int health = adventure.getHealth();
 
@@ -207,22 +212,46 @@ public class UserInterface
     }
     private void equip(String shortname)
     {
-    EquipOutcome outcome = adventure.equip(shortname);
+        EquipOutcome outcome = adventure.equip(shortname);
 
-    switch (outcome.getResult())
-    {
-        case NOT_FOUND:
-            System.out.println("You do not have a weapon called " + shortname);
-            break;
+        switch (outcome.getResult())
+        {
+            case NOT_FOUND:
+                System.out.println("You do not have a weapon called " + shortname);
+                break;
 
-        case NOT_WEAPON:
-            System.out.println(outcome.getItemName() + " is not a weapon");
-            break;
+            case NOT_WEAPON:
+                System.out.println(outcome.getItemName() + " is not a weapon");
+                break;
 
-        case EQUIPPED:
-            System.out.println("You have eqquiped " + outcome.getItemName());
-            break;
+            case EQUIPPED:
+                System.out.println("You have eqquiped " + outcome.getItemName());
+                break;
+        }
+    }
+    private void attack()
+        {
+            AttackOutcome outcome = adventure.attack();
+
+            switch (outcome.getResult())
+            {
+                case NO_WEAPON:
+                    System.out.println("You do not have a weapon equipped.");
+                    break;
+
+                case NO_USES_LEFT:
+                    System.out.println("You cannot use " + outcome.getWeaponName()
+                    + ", It has no uses left.");
+                    break;
+
+                case ATTACKED:
+                    System.out.println("You " + outcome.getAttackVerb()
+                    + " " + outcome.getWeaponName()
+                    + " at the empty air. "
+                    + outcome.getUsesLeftText());
+                    break;
+            }
+        }
+
     }
 
-    }
-}

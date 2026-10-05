@@ -34,7 +34,7 @@ public class Map
         room1.addItem(bread);
         room1.addItem(mushroom);
         room1.addItem(sword);
-        room6.addItem(revolver);
+        room1.addItem(revolver);
 
         room1.setEast(room2);
         room1.setSouth(room4);

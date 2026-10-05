@@ -69,4 +69,10 @@ public class Adventure
         return player.GetEqquiped();
     }
 
+
+    public AttackOutcome attack()
+    {
+        return player.attack();
+    }
+
 }
