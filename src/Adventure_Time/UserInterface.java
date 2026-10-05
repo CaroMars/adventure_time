@@ -54,9 +54,11 @@ public class UserInterface
             } else if (command.startsWith("eat "))
             {
                 eat(command.substring(4));
+            } else if (command.startsWith("equip ")){
+                equip(command.substring(6));
             }
 
-
+                
             else if (command.equals("health"))
             {
                 int health = adventure.getHealth();
@@ -94,7 +96,10 @@ public class UserInterface
                         "drop <item>\n" +
                         "health\n" +
                         "help\n" +
-                        "exit");
+                        "exit" +
+                        "equip");
+
+
             }
 
             System.out.print("> ");
@@ -191,5 +196,25 @@ public class UserInterface
                 }
 
         }
+    }
+    private void equip(String shortname)
+    {
+    EquipOutcome outcome = adventure.equip(shortname);
+
+    switch (outcome.getResult())
+    {
+        case NOT_FOUND:
+            System.out.println("You do not have a weapon called " + shortname);
+            break;
+
+        case NOT_WEAPON:
+            System.out.println(outcome.getItemName() + " is not a weapon");
+            break;
+
+        case EQUIPPED:
+            System.out.println("You have eqquiped " + outcome.getItemName());
+            break;
+    }
+
     }
 }
