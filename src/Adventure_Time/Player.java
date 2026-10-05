@@ -10,6 +10,8 @@ public class Player
 
     private int health;
 
+    private Weapon equipped;
+
     public Player(Room startRoom)
     {
         currentRoom = startRoom;
@@ -162,6 +164,40 @@ public class Player
         }
         return new EatOutcome(EatResult.EATEN, foundItem.getLongName(), healthChange);
 
+
+
+    }
+
+    public EquipOutcome equip (String shortName){
+        Item foundItem = null;
+
+        for (Item item : inventory){
+            if (item.getShortName().equalsIgnoreCase(shortName)){
+                foundItem = item;
+                break;
+            }
+        }
+        if (foundItem == null){
+            return new EquipOutcome(EquipResult.NOT_FOUND, null);
+        }
+        if (!(foundItem instanceof Weapon)){
+            return new EquipOutcome(EquipResult.NOT_WEAPON, foundItem.getLongName());
+        }
+
+
+        equipped = (Weapon) foundItem;
+        return new EquipOutcome(EquipResult.EQUIPPED, foundItem.getLongName());
+    }
+
+
+    public void attack(){
+        if (equipped == null){
+            return;
+        }
+        if (!equipped.canUse()){
+            return;
+        }
+        equipped.use();
     }
 
 

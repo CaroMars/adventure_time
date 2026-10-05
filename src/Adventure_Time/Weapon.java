@@ -20,4 +20,7 @@ package Adventure_Time;
         public abstract String getAttackVerb();
 
         public abstract String getUsesLeftText();
+
     }
+
+
