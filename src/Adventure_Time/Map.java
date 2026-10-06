@@ -11,15 +11,15 @@ public class Map
 
     private void buildMap()
     {
-        Room room1 = new Room("Room 1", "A room with no distinct features, except two doors.");
-        Room room2 = new Room("Room 2", "A room with no distinct features, except two doors.");
-        Room room3 = new Room("Room 3", "A room with no distinct features, except two doors.");
-        Room room4 = new Room("Room 4", "A room with no distinct features, except two doors.");
-        Room room5 = new Room("Room 5", "A room with no distinct features, except one door.");
-        Room room6 = new Room("Room 6", "A room with no distinct features, except two doors.");
-        Room room7 = new Room("Room 7", "A room with no distinct features, except two doors.");
-        Room room8 = new Room("Room 8", "A room with no distinct features, except three doors.");
-        Room room9 = new Room("Room 9", "A room with no distinct features, except two doors.");
+        Room room1 = new Room("Room 1", "A cold stone room with two doors.");
+        Room room2 = new Room("Room 2", "An old library covered in dust, with two doors.");
+        Room room3 = new Room("Room 3", "A dark room with blood on the floor and two doors.");
+        Room room4 = new Room("Room 4", "A damp room covered in green moss, with two doors.");
+        Room room5 = new Room("Room 5", "A small storage room with broken crates and one door.");
+        Room room6 = new Room("Room 6", "A warm room lit by a fireplace, with two doors.");
+        Room room7 = new Room("Room 7", "A ruined kitchen with rotten food and two doors.");
+        Room room8 = new Room("Room 8", "A large hall with an old stone statue and three doors.");
+        Room room9 = new Room("Room 9", "A dark dungeon with chains on the walls and two doors.");
 
         Item lamp = new Item("lamp", "A dusty old lamp");
         Item flashlight = new Item("flashlight", "A clean shiny flashlight");
