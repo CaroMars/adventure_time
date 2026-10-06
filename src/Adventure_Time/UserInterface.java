@@ -91,19 +91,29 @@ public class UserInterface
             }
             else if (command.equals("help"))
             {
-                System.out.println("go north\n" +
-                        "go south\n" +
-                        "go east\n" +
-                        "go west\n" +
-                        "look\n" +
-                        "inventory\n" +
-                        "take <item>\n" +
-                        "drop <item>\n" +
-                        "health\n" +
-                        "exit\n" +
-                        "equip <Weapon>\n" +
-                        "attack");
-
+                System.out.println(
+                        "=== MOVEMENT ===\n" +
+                                "go north\n" +
+                                "go south\n" +
+                                "go east\n" +
+                                "go west\n" +
+                                "\n" +
+                                "=== INFORMATION ===\n" +
+                                "look\n" +
+                                "health\n" +
+                                "inventory\n" +
+                                "\n" +
+                                "=== ITEMS ===\n" +
+                                "take <item>\n" +
+                                "drop <item>\n" +
+                                "equip <weapon>\n" +
+                                "\n" +
+                                "=== COMBAT ===\n" +
+                                "attack\n" +
+                                "\n" +
+                                "=== GAME ===\n" +
+                                "exit"
+                );
 
             }
 
