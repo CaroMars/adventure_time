@@ -61,6 +61,33 @@ public class Player
         return currentRoom.getItems();
     }
 
+    public ArrayList<String> getAvailableDirections()
+    {
+        ArrayList<String> directions = new ArrayList<>();
+
+        if (currentRoom.getNorth() != null)
+        {
+            directions.add("north");
+        }
+
+        if (currentRoom.getSouth() != null)
+        {
+            directions.add("south");
+        }
+
+        if (currentRoom.getEast() != null)
+        {
+            directions.add("east");
+        }
+
+        if (currentRoom.getWest() != null)
+        {
+            directions.add("west");
+        }
+
+        return directions;
+    }
+
     public ArrayList<Item> getInventory()
     {
         return inventory;

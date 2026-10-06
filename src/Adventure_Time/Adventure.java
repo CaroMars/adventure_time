@@ -33,6 +33,11 @@ public class Adventure
         return player.getCurrentRoomItems();
     }
 
+    public ArrayList<String> getAvailableDirections()
+    {
+        return player.getAvailableDirections();
+    }
+
     public Item takeItem(String itemName)
     {
         return player.takeItem(itemName);

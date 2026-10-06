@@ -91,13 +91,15 @@ public class UserInterface
             }
             else if (command.equals("help"))
             {
+                System.out.println("=== MOVEMENT ===");
+
+                for (String direction : adventure.getAvailableDirections())
+                {
+                    System.out.println("go " + direction);
+                }
+
                 System.out.println(
-                        "=== MOVEMENT ===\n" +
-                                "go north\n" +
-                                "go south\n" +
-                                "go east\n" +
-                                "go west\n" +
-                                "\n" +
+                        "\n" +
                                 "=== INFORMATION ===\n" +
                                 "look\n" +
                                 "health\n" +
@@ -106,6 +108,7 @@ public class UserInterface
                                 "=== ITEMS ===\n" +
                                 "take <item>\n" +
                                 "drop <item>\n" +
+                                "eat <item>\n" +
                                 "equip <weapon>\n" +
                                 "\n" +
                                 "=== COMBAT ===\n" +
@@ -114,7 +117,6 @@ public class UserInterface
                                 "=== GAME ===\n" +
                                 "exit"
                 );
-
             }
 
             System.out.print("> ");
