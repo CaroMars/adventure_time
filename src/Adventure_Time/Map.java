@@ -21,20 +21,88 @@ public class Map
         Room room8 = new Room("Room 8", "A large hall with an old stone statue and three doors.");
         Room room9 = new Room("Room 9", "A dark dungeon with chains on the walls and two doors.");
 
+        // ROOM 1 - Cold stone entrance
         Item lamp = new Item("lamp", "A dusty old lamp");
         Item flashlight = new Item("flashlight", "A clean shiny flashlight");
         Food bread = new Food("bread", "A loaf of stale bread", 10);
-        Food mushroom = new Food("mushroom","a pale glowing mushroom",-50 );
-        MeleeWeapon sword = new MeleeWeapon("sword", "a rusty sword", 25);
-        RangedWeapon revolver = new RangedWeapon("revolver", "an old revolver", 40, 6);
-
 
         room1.addItem(lamp);
         room1.addItem(flashlight);
         room1.addItem(bread);
-        room1.addItem(mushroom);
-        room1.addItem(sword);
-        room1.addItem(revolver);
+
+
+// ROOM 2 - Old dusty library
+        Item book = new Item("book", "An ancient book covered in dust");
+        Food potion = new Food("potion", "A mysterious red healing potion", 30);
+        MeleeWeapon staff = new MeleeWeapon("staff", "An old wooden staff", 15);
+
+        room2.addItem(book);
+        room2.addItem(potion);
+        room2.addItem(staff);
+
+
+// ROOM 3 - Bloody dark room
+        MeleeWeapon knife = new MeleeWeapon("knife", "A bloody old knife", 20);
+        Food rottenMeat = new Food("meat", "A piece of rotten meat", -25);
+
+        room3.addItem(knife);
+        room3.addItem(rottenMeat);
+
+
+// ROOM 4 - Damp mossy room
+        Food mushroom = new Food("mushroom", "A pale glowing mushroom", -50);
+        MeleeWeapon club = new MeleeWeapon("club", "A heavy wooden club covered in moss", 20);
+
+        room4.addItem(mushroom);
+        room4.addItem(club);
+
+
+// ROOM 5 - Storage room
+        Item rope = new Item("rope", "A long piece of old rope");
+        Food apple = new Food("apple", "A surprisingly fresh apple", 15);
+        MeleeWeapon sword = new MeleeWeapon("sword", "A rusty sword", 25);
+
+        room5.addItem(rope);
+        room5.addItem(apple);
+        room5.addItem(sword);
+
+
+// ROOM 6 - Fireplace room
+        Food cookedMeat = new Food("cooked meat", "A warm piece of cooked meat", 25);
+        MeleeWeapon axe = new MeleeWeapon("axe", "A heavy fire axe", 35);
+
+        room6.addItem(cookedMeat);
+        room6.addItem(axe);
+
+
+// ROOM 7 - Ruined kitchen
+        Food kitchenBread = new Food("kitchen bread", "An old loaf left in the ruined kitchen", 5);
+        Food rottenApple = new Food("rotten apple", "A rotten apple that smells terrible", -20);
+        MeleeWeapon kitchenKnife = new MeleeWeapon("kitchen knife", "A sharp kitchen knife", 15);
+
+        room7.addItem(kitchenBread);
+        room7.addItem(rottenApple);
+        room7.addItem(kitchenKnife);
+
+
+// ROOM 8 - Large statue hall
+        Item amulet = new Item("amulet", "A golden amulet found near the stone statue");
+        MeleeWeapon hammer = new MeleeWeapon("hammer", "A massive stone hammer", 40);
+
+        room8.addItem(amulet);
+        room8.addItem(hammer);
+
+
+// ROOM 9 - Dark dungeon
+        Item chains = new Item("chains", "A set of old rusty chains");
+        RangedWeapon revolver = new RangedWeapon("revolver", "An old revolver", 40, 6);
+        RangedWeapon crossbow = new RangedWeapon("crossbow", "An old wooden crossbow", 35, 4);
+        Food poison = new Food("poison", "A bottle filled with poisonous liquid", -75);
+
+        room9.addItem(chains);
+        room9.addItem(revolver);
+        room9.addItem(crossbow);
+        room9.addItem(poison);
 
         room1.setEast(room2);
         room1.setSouth(room4);
