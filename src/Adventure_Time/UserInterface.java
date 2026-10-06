@@ -100,9 +100,8 @@ public class UserInterface
                         "take <item>\n" +
                         "drop <item>\n" +
                         "health\n" +
-                        "help\n" +
                         "exit\n" +
-                        "equip\n" +
+                        "equip <Weapon>\n" +
                         "attack");
 
 
