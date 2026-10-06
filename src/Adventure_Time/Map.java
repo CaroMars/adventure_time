@@ -43,10 +43,10 @@ public class Map
 
 // ROOM 3 - Bloody dark room
         MeleeWeapon knife = new MeleeWeapon("knife", "A bloody old knife", 20);
-        Food rottenMeat = new Food("meat", "A piece of rotten meat", -25);
+        Food tastyMeat = new Food("meat", "A piece of tasty meat", 25);
 
         room3.addItem(knife);
-        room3.addItem(rottenMeat);
+        room3.addItem(tastyMeat);
 
 
 // ROOM 4 - Damp mossy room
@@ -76,13 +76,13 @@ public class Map
 
 
 // ROOM 7 - Ruined kitchen
-        Food kitchenBread = new Food("kitchen bread", "An old loaf left in the ruined kitchen", 5);
+        Food kitchenBread = new Food("loaf", "An old loaf left in the kitchen", 5);
         Food rottenApple = new Food("rotten apple", "A rotten apple that smells terrible", -20);
-        MeleeWeapon kitchenKnife = new MeleeWeapon("kitchen knife", "A sharp kitchen knife", 15);
+        MeleeWeapon kitchenFork = new MeleeWeapon("fork", "A sharp kitchen fork", 15);
 
         room7.addItem(kitchenBread);
         room7.addItem(rottenApple);
-        room7.addItem(kitchenKnife);
+        room7.addItem(kitchenFork);
 
 
 // ROOM 8 - Large statue hall
@@ -97,7 +97,7 @@ public class Map
         Item chains = new Item("chains", "A set of old rusty chains");
         RangedWeapon revolver = new RangedWeapon("revolver", "An old revolver", 40, 6);
         RangedWeapon crossbow = new RangedWeapon("crossbow", "An old wooden crossbow", 35, 4);
-        Food poison = new Food("poison", "A bottle filled with poisonous liquid", -75);
+        Food poison = new Food("poison", "A bottle filled with poison", -75);
 
         room9.addItem(chains);
         room9.addItem(revolver);

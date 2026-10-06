@@ -279,7 +279,7 @@ public class UserInterface
                 break;
 
             case EQUIPPED:
-                System.out.println("You have eqquiped " + outcome.getItemName());
+                System.out.println("You have equipped " + outcome.getItemName());
                 break;
         }
     }
