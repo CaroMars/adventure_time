@@ -101,8 +101,9 @@ public class UserInterface
                         "drop <item>\n" +
                         "health\n" +
                         "help\n" +
-                        "exit" +
-                        "equip");
+                        "exit\n" +
+                        "equip\n" +
+                        "attack");
 
 
             }
