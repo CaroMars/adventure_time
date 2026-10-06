@@ -40,6 +40,12 @@ public class UserInterface
             {
                 look();
             }
+
+            else if (command.equals("map"))
+            {
+                map();
+            }
+
             else if (command.equals("inventory"))
             {
                 inventory();
@@ -102,6 +108,7 @@ public class UserInterface
                         "\n" +
                                 "=== INFORMATION ===\n" +
                                 "look\n" +
+                                "map\n" +
                                 "health\n" +
                                 "inventory\n" +
                                 "\n" +
@@ -148,6 +155,41 @@ public class UserInterface
             System.out.println(item.getLongName());
         }
 
+    }
+
+    private void map()
+    {
+        String currentRoom = adventure.getCurrentRoomName();
+
+        String room1 = currentRoom.equals("Room 1") ? "Room 1 *" : "Room 1";
+        String room2 = currentRoom.equals("Room 2") ? "Room 2 *" : "Room 2";
+        String room3 = currentRoom.equals("Room 3") ? "Room 3 *" : "Room 3";
+        String room4 = currentRoom.equals("Room 4") ? "Room 4 *" : "Room 4";
+        String room5 = currentRoom.equals("Room 5") ? "Room 5 *" : "Room 5";
+        String room6 = currentRoom.equals("Room 6") ? "Room 6 *" : "Room 6";
+        String room7 = currentRoom.equals("Room 7") ? "Room 7 *" : "Room 7";
+        String room8 = currentRoom.equals("Room 8") ? "Room 8 *" : "Room 8";
+        String room9 = currentRoom.equals("Room 9") ? "Room 9 *" : "Room 9";
+
+        System.out.printf(
+                "+----------+     +----------+     +----------+%n" +
+                        "| %-8s |-----| %-8s |-----| %-8s |%n" +
+                        "+----------+     +----------+     +----------+%n" +
+                        "     |                                  |%n" +
+                        "     |                                  |%n" +
+                        "+----------+     +----------+     +----------+%n" +
+                        "| %-8s |     | %-8s |     | %-8s |%n" +
+                        "+----------+     +----------+     +----------+%n" +
+                        "     |                |                 |%n" +
+                        "     |                |                 |%n" +
+                        "+----------+     +----------+     +----------+%n" +
+                        "| %-8s |-----| %-8s |-----| %-8s |%n" +
+                        "+----------+     +----------+     +----------+%n" +
+                        "* = YOU%n",
+                room1, room2, room3,
+                room4, room5, room6,
+                room7, room8, room9
+        );
     }
 
     private void inventory()
