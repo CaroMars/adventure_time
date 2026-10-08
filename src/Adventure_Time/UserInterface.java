@@ -155,6 +155,10 @@ public class UserInterface
             System.out.println(item.getLongName());
         }
 
+        for (Enemy enemy : adventure.getCurrentRoomEnemies())
+        {
+            System.out.println(enemy.getDescription());
+        }
     }
 
     private void map()
