@@ -48,6 +48,11 @@ public class Map
         room3.addItem(knife);
         room3.addItem(tastyMeat);
 
+        MeleeWeapon zombieWeapon = new MeleeWeapon("bone", "A sharp broken bone", 10);
+        Enemy zombie = new Enemy("zombie", "A rotting zombie", 50, zombieWeapon);
+
+        room3.addEnemy(zombie);
+
 
 // ROOM 4 - Damp mossy room
         Food mushroom = new Food("mushroom", "A pale glowing mushroom", -50);
@@ -73,6 +78,11 @@ public class Map
 
         room6.addItem(cookedMeat);
         room6.addItem(axe);
+
+        MeleeWeapon skeletonWeapon = new MeleeWeapon("dagger", "A rusty skeleton dagger", 15);
+        Enemy skeleton = new Enemy("skeleton", "An armed skeleton", 75, skeletonWeapon);
+
+        room6.addEnemy(skeleton);
 
 
 // ROOM 7 - Ruined kitchen
@@ -103,6 +113,11 @@ public class Map
         room9.addItem(revolver);
         room9.addItem(crossbow);
         room9.addItem(poison);
+
+        MeleeWeapon guardWeapon = new MeleeWeapon("mace", "A heavy iron mace", 25);
+        Enemy guard = new Enemy("guard", "A dangerous dungeon guard", 100, guardWeapon);
+
+        room9.addEnemy(guard);
 
         room1.setEast(room2);
         room1.setSouth(room4);
