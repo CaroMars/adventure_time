@@ -64,7 +64,7 @@ public class UserInterface
                 equip(command.substring(6));
             } else if (command.equals("attack"))
             {
-                attack();
+                attack(7);
             }
 
 
