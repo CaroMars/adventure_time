@@ -61,6 +61,11 @@ public class Player
         return currentRoom.getItems();
     }
 
+    public ArrayList<Enemy> getCurrentRoomEnemies()
+    {
+        return currentRoom.getEnemies();
+    }
+
     public ArrayList<String> getAvailableDirections()
     {
         ArrayList<String> directions = new ArrayList<>();
