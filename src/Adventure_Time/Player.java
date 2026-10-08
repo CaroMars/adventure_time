@@ -243,6 +243,15 @@ public class Player
             }
         }
 
+        if (target == null)
+        {
+            return new AttackOutcome(
+                    AttackResult.NO_ENEMY,
+                    null,
+                    null,
+                    null
+            );
+        }
         if (equipped == null)
         {
             return new AttackOutcome(
