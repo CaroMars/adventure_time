@@ -33,6 +33,11 @@ public class Adventure
         return player.getCurrentRoomItems();
     }
 
+    public ArrayList<Enemy> getCurrentRoomEnemies()
+    {
+        return player.getCurrentRoomEnemies();
+    }
+
     public ArrayList<String> getAvailableDirections()
     {
         return player.getAvailableDirections();
