@@ -232,6 +232,17 @@ public class Player
 
     public AttackOutcome attack(String enemyName)
     {
+        Enemy target = null;
+
+        for (Enemy enemy : currentRoom.getEnemies())
+        {
+            if (enemy.getName().equalsIgnoreCase(enemyName))
+            {
+                target = enemy;
+                break;
+            }
+        }
+
         if (equipped == null)
         {
             return new AttackOutcome(
