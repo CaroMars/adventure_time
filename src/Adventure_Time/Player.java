@@ -230,7 +230,7 @@ public class Player
         return equipped;
     }
 
-    public AttackOutcome attack()
+    public AttackOutcome attack(String enemyName)
     {
         if (equipped == null)
         {
