@@ -62,9 +62,10 @@ public class UserInterface
                 eat(command.substring(4));
             } else if (command.startsWith("equip ")){
                 equip(command.substring(6));
-            } else if (command.equals("attack"))
+
+            } else if (command.startsWith("attack "))
             {
-                attack(7);
+                attack(command.substring(7));
             }
 
 
@@ -287,12 +288,16 @@ public class UserInterface
                 break;
         }
     }
-    private void attack()
-        {
-            AttackOutcome outcome = adventure.attack();
+    private void attack(String enemyName)
+    {
+        AttackOutcome outcome = adventure.attack(enemyName);
 
             switch (outcome.getResult())
             {
+                case NO_ENEMY:
+                    System.out.println("There is no " + enemyName + " here.");
+                    break;
+
                 case NO_WEAPON:
                     System.out.println("You do not have a weapon equipped.");
                     break;
