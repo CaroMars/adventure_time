@@ -80,9 +80,9 @@ public class Adventure
     }
 
 
-    public AttackOutcome attack()
+    public AttackOutcome attack(String enemyName)
     {
-        return player.attack();
+        return player.attack(enemyName);
     }
 
 }
