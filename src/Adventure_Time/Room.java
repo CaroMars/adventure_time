@@ -12,12 +12,14 @@ public class Room
     private Room west;
 
     private ArrayList<Item> items;
+    private ArrayList<Enemy> enemies;
 
     public Room(String name, String description)
     {
         this.name = name;
         this.description = description;
         items = new ArrayList<>();
+        enemies = new ArrayList<>();
     }
 
     public String getName()
@@ -33,6 +35,16 @@ public class Room
     public void addItem(Item item)
     {
         items.add(item);
+    }
+
+    public void addEnemy(Enemy enemy)
+    {
+        enemies.add(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemies()
+    {
+        return enemies;
     }
 
     public ArrayList<Item> getItems()
