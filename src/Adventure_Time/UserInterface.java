@@ -120,7 +120,7 @@ public class UserInterface
                                 "equip <weapon>\n" +
                                 "\n" +
                                 "=== COMBAT ===\n" +
-                                "attack\n" +
+                                "attack <enemy>\n" +
                                 "\n" +
                                 "=== GAME ===\n" +
                                 "exit"
@@ -292,29 +292,49 @@ public class UserInterface
     {
         AttackOutcome outcome = adventure.attack(enemyName);
 
-            switch (outcome.getResult())
-            {
-                case NO_ENEMY:
-                    System.out.println("There is no " + enemyName + " here.");
-                    break;
+        switch (outcome.getResult())
+        {
+            case NO_ENEMY:
+                System.out.println("There is no " + enemyName + " here.");
+                break;
 
-                case NO_WEAPON:
-                    System.out.println("You do not have a weapon equipped.");
-                    break;
+            case NO_WEAPON:
+                System.out.println("You do not have a weapon equipped.");
+                break;
 
-                case NO_USES_LEFT:
-                    System.out.println("You cannot use " + outcome.getWeaponName()
-                    + ", It has no uses left.");
-                    break;
+            case NO_USES_LEFT:
+                System.out.println("You cannot use " + outcome.getWeaponName()
+                        + ". It has no uses left.");
+                break;
 
-                case ATTACKED:
-                    System.out.println("You " + outcome.getAttackVerb()
-                    + " " + outcome.getWeaponName()
-                    + " at the empty air. "
-                    + outcome.getUsesLeftText());
-                    break;
-            }
+            case ATTACKED:
+                System.out.println("You " + outcome.getAttackVerb()
+                        + " " + outcome.getEnemyName()
+                        + " with " + outcome.getWeaponName() + ".");
+
+                if (outcome.isEnemyDead())
+                {
+                    System.out.println(outcome.getEnemyName() + " is dead.");
+                    System.out.println("The enemy dropped its weapon.");
+                }
+                else
+                {
+                    System.out.println(outcome.getEnemyName()
+                            + " has " + outcome.getEnemyHealth()
+                            + " health left.");
+
+                    System.out.println(outcome.getEnemyName()
+                            + " attacks you back for "
+                            + outcome.getDamageTaken()
+                            + " damage.");
+
+                    System.out.println("Your health: " + adventure.getHealth());
+                }
+
+                System.out.println(outcome.getUsesLeftText());
+                break;
         }
+    }
 
     }
 

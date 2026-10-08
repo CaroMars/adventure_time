@@ -5,11 +5,8 @@ import java.util.ArrayList;
 public class Player
 {
     private Room currentRoom;
-
     private ArrayList<Item> inventory;
-
     private int health;
-
     private Weapon equipped;
 
     public Player(Room startRoom)
@@ -17,9 +14,7 @@ public class Player
         currentRoom = startRoom;
         inventory = new ArrayList<>();
         health = 100;
-
     }
-
 
     public boolean move(String direction)
     {
@@ -31,11 +26,13 @@ public class Player
             case "west" -> currentRoom.getWest();
             default -> null;
         };
+
         if (desiredRoom != null)
         {
             currentRoom = desiredRoom;
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -113,7 +110,6 @@ public class Player
         return null;
     }
 
-
     public Item dropItem(String itemName)
     {
         for (Item item : inventory)
@@ -124,6 +120,7 @@ public class Player
                 {
                     equipped = null;
                 }
+
                 inventory.remove(item);
                 currentRoom.addItem(item);
                 return item;
@@ -138,13 +135,13 @@ public class Player
         return health;
     }
 
-    // Finder mad i inventory/rummet, ændre health og fjerne maden
+    // Finder mad i inventory/rummet, ændrer health og fjerner maden
     public EatOutcome eat(String itemName)
     {
         Item foundItem = null;
         boolean inInventory = false;
 
-        //leder vi efter i spillerens inventory
+        // Leder efter i spillerens inventory
         for (Item item : inventory)
         {
             if (item.getShortName().equalsIgnoreCase(itemName))
@@ -155,8 +152,7 @@ public class Player
             }
         }
 
-        //Hvis den ikke blev fundet i inventory, leder vi i rummet
-
+        // Hvis den ikke blev fundet i inventory, leder vi i rummet
         if (foundItem == null)
         {
             for (Item item : currentRoom.getItems())
@@ -173,14 +169,16 @@ public class Player
         if (foundItem == null)
         {
             return new EatOutcome(EatResult.NOT_FOUND, null, 0);
-
         }
 
-        // Tingen findes men ikke er mad
+        // Tingen findes, men er ikke mad
         if (!(foundItem instanceof Food))
         {
-            return new EatOutcome(EatResult.NOT_FOOD, foundItem.getLongName(), 0);
-
+            return new EatOutcome(
+                    EatResult.NOT_FOOD,
+                    foundItem.getLongName(),
+                    0
+            );
         }
 
         // Tingen er food
@@ -189,7 +187,7 @@ public class Player
         int healthChange = food.getHealthPoints();
         health += healthChange;
 
-        //Fjern maden efter den er blevet spist
+        // Fjern maden efter den er blevet spist
         if (inInventory)
         {
             inventory.remove(foundItem);
@@ -198,35 +196,53 @@ public class Player
         {
             currentRoom.getItems().remove(foundItem);
         }
-        return new EatOutcome(EatResult.EATEN, foundItem.getLongName(), healthChange);
 
-
-
+        return new EatOutcome(
+                EatResult.EATEN,
+                foundItem.getLongName(),
+                healthChange
+        );
     }
 
-    public EquipOutcome equip (String shortName){
+    public EquipOutcome equip(String shortName)
+    {
         Item foundItem = null;
 
-        for (Item item : inventory){
-            if (item.getShortName().equalsIgnoreCase(shortName)){
+        for (Item item : inventory)
+        {
+            if (item.getShortName().equalsIgnoreCase(shortName))
+            {
                 foundItem = item;
                 break;
             }
         }
-        if (foundItem == null){
-            return new EquipOutcome(EquipResult.NOT_FOUND, null);
-        }
-        if (!(foundItem instanceof Weapon)){
-            return new EquipOutcome(EquipResult.NOT_WEAPON, foundItem.getLongName());
+
+        if (foundItem == null)
+        {
+            return new EquipOutcome(
+                    EquipResult.NOT_FOUND,
+                    null
+            );
         }
 
+        if (!(foundItem instanceof Weapon))
+        {
+            return new EquipOutcome(
+                    EquipResult.NOT_WEAPON,
+                    foundItem.getLongName()
+            );
+        }
 
         equipped = (Weapon) foundItem;
-        return new EquipOutcome(EquipResult.EQUIPPED, foundItem.getLongName());
+
+        return new EquipOutcome(
+                EquipResult.EQUIPPED,
+                foundItem.getLongName()
+        );
     }
 
-
-    public Weapon GetEqquiped(){
+    public Weapon GetEqquiped()
+    {
         return equipped;
     }
 
@@ -234,6 +250,7 @@ public class Player
     {
         Enemy target = null;
 
+        // Find enemy in current room
         for (Enemy enemy : currentRoom.getEnemies())
         {
             if (enemy.getName().equalsIgnoreCase(enemyName))
@@ -243,46 +260,82 @@ public class Player
             }
         }
 
+        // Enemy does not exist
         if (target == null)
         {
             return new AttackOutcome(
                     AttackResult.NO_ENEMY,
                     null,
                     null,
-                    null
+                    null,
+                    enemyName,
+                    0,
+                    false,
+                    0
             );
         }
+
+        // Player has no weapon equipped
         if (equipped == null)
         {
             return new AttackOutcome(
                     AttackResult.NO_WEAPON,
                     null,
                     null,
-                    null);
-
+                    null,
+                    target.getName(),
+                    target.getHealth(),
+                    false,
+                    0
+            );
         }
+
+        // Weapon cannot be used
         if (!equipped.canUse())
         {
             return new AttackOutcome(
                     AttackResult.NO_USES_LEFT,
                     equipped.getLongName(),
                     equipped.getAttackVerb(),
-                    equipped.getUsesLeftText()
+                    equipped.getUsesLeftText(),
+                    target.getName(),
+                    target.getHealth(),
+                    false,
+                    0
             );
         }
 
+        // Player attacks enemy
         equipped.use();
         target.hit(equipped.getDamage());
+
+        boolean enemyDead = target.isDead();
+        int damageTaken = 0;
+
+        if (enemyDead)
+        {
+            // Enemy drops its weapon
+            currentRoom.addItem(target.getWeapon());
+
+            // Remove dead enemy
+            currentRoom.getEnemies().remove(target);
+        }
+        else
+        {
+            // Enemy attacks player back
+            damageTaken = target.getWeapon().getDamage();
+            health -= damageTaken;
+        }
 
         return new AttackOutcome(
                 AttackResult.ATTACKED,
                 equipped.getLongName(),
                 equipped.getAttackVerb(),
-                equipped.getUsesLeftText()
+                equipped.getUsesLeftText(),
+                target.getName(),
+                target.getHealth(),
+                enemyDead,
+                damageTaken
         );
-
     }
-
-
 }
-
