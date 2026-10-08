@@ -158,7 +158,8 @@ public class UserInterface
 
         for (Enemy enemy : adventure.getCurrentRoomEnemies())
         {
-            System.out.println(enemy.getDescription());
+            System.out.println(enemy.getName() + " - " + enemy.getDescription()
+                    + " - Health: " + enemy.getHealth());
         }
     }
 
@@ -329,7 +330,15 @@ public class UserInterface
                             + " damage.");
 
                     System.out.println("Your health: " + adventure.getHealth());
+
+                    if (adventure.getHealth() <= 0)
+                    {
+                        System.out.println("You died.");
+                        System.exit(0);
+                    }
+
                 }
+
 
                 System.out.println(outcome.getUsesLeftText());
                 break;
