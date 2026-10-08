@@ -272,6 +272,7 @@ public class Player
         }
 
         equipped.use();
+        target.hit(equipped.getDamage());
 
         return new AttackOutcome(
                 AttackResult.ATTACKED,
